@@ -18,7 +18,6 @@
   &nbsp; • &nbsp;
   <a href="https://github.com/rohanbhowm25308/ThreatGuard-MCP"><strong>💻 Source Code</strong></a>
   &nbsp; • &nbsp;
-  <a href="https://github.com/rohanbhowm25308/ThreatGuard-MCP/blob/main/docs/SECURITY_REVIEW.md"><strong>🔐 Security Review</strong></a>
 </p>
 
 ---
