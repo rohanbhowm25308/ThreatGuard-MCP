@@ -414,7 +414,7 @@ Passionate about building practical AI-powered applications that connect intelli
 
 ## ⭐ Support the Project
 
-If you find ThreatGuard MCP AI useful, consider giving the repository a star.
+If you find ThreatGuard MCP useful, consider giving the repository a star.
 
 Your feedback and contributions are welcome.
 
@@ -431,5 +431,5 @@ Your feedback and contributions are welcome.
 </p>
 
 <p align="center">
-  © 2026 ThreatGuard MCP AI
+  © ThreatGuard MCP
 </p>
