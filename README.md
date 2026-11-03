@@ -394,7 +394,7 @@ The primary focus is not training an AI model from scratch, but **integrating AI
 
 **Rohan Bhowmik**
 
-*AI/ML Developer | Data Science Enthusiast | Generative AI & AI Integration*
+*AI/ML Developer | Data Science Enthusiast | Generative AI | AI Integration & Web Devloper*
 
 Passionate about building practical AI-powered applications that connect intelligent models with real-world problems.
 
