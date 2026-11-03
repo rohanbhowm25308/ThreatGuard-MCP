@@ -1,0 +1,3 @@
+cveID,vendorProject,product,vulnerabilityName,dateAdded
+CVE-2024-3400,Palo Alto Networks,PAN-OS,Command Injection Vulnerability,2024-04-12
+CVE-2023-4863,Google,Chrome,Heap Buffer Overflow,2023-09-13
