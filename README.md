@@ -1,435 +1,102 @@
-# 🛡️ ThreatGuard MCP
-### Intelligent Threat Intelligence. Secure AI Integration. Smarter Vulnerability Decisions.
+# ThreatGuard MCP 🛡️
 
-<p align="center">
-  <img src="https://img.shields.io/badge/AI-Integration-00D4FF?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/MCP-Enabled-8B5CF6?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Python-Flask-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Groq-AI-F97316?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Deployment-Render-46E3B7?style=for-the-badge&logo=render&logoColor=black" />
-</p>
+A visually rich **Flask cybersecurity dashboard** and **real read-only MCP server** powered by the official CISA Known Exploited Vulnerabilities catalog.
 
-<p align="center">
-  <strong>An AI-integrated cybersecurity intelligence platform that transforms vulnerability data into actionable defensive insights.</strong>
-</p>
+## Features
+- Animated original blue/cyan starfield and orbiting security motif, responsive dashboard
+- Live vulnerability explorer, CVE details, vendor/product/keyword search, stats
+- Standalone Python MCP server with 4 read-only tools (stdio transport)
+- Input validation, 30 req/min local Flask API limiter, logging, security headers
+- Cached official CISA KEV JSON, timeout and upstream failure handling
+- Unit/security tests and self security review
 
-<p align="center">
-  <a href="https://threatguard-mcp.onrender.com/"><strong>🚀 Live Demo</strong></a>
-  &nbsp; • &nbsp;
-  <a href="https://github.com/rohanbhowm25308/ThreatGuard-MCP"><strong>💻 Source Code</strong></a>
-  &nbsp; • &nbsp;
-</p>
+## Requirements
+Python 3.10+ and internet access for the official CISA feed.
 
----
-
-##  Overview
-
-**ThreatGuard MCP AI** is an advanced AI integration and cybersecurity intelligence project that brings together **Model Context Protocol (MCP), Groq-powered language models, speech recognition, threat intelligence APIs, and explainable vulnerability analysis**.
-
-Instead of displaying raw CVE information alone, ThreatGuard provides an interactive environment where users can explore vulnerabilities, ask security questions, investigate relationships, prioritize findings, and generate professional reports.
-
-The platform combines a responsive web dashboard with a standalone read-only MCP server, enabling AI-compatible access to official vulnerability intelligence.
-
-> **Our mission:** Make cybersecurity intelligence more accessible, understandable, and actionable through secure AI integration.
-
-## ✨ Key Features
-
-###  01 — Groq AI Security Assistant
-
-An integrated conversational AI assistant for cybersecurity analysis.
-
-- Ask natural-language questions about CVEs and vulnerabilities.
-- Receive explanations of security concepts and mitigation strategies.
-- Analyze selected vulnerability records with AI assistance.
-- Interact through a responsive chat interface.
-- Keep API credentials on the backend.
-
-**Powered by:** Groq API and `openai/gpt-oss-20b`.
-
-###  02 — AI Voice Interaction
-
-Interact with the AI assistant using your voice.
-
-- Record questions through your microphone.
-- Convert speech into text using Groq Whisper.
-- Review and edit the transcription before sending.
-- Continue the conversation through the AI chat interface.
-
-**Speech model:** `whisper-large-v3-turbo`.
-
-###  03 — AI Threat Risk Predictor
-
-Turn vulnerability information into explainable security priorities.
-
-- Select a CVE from the active dataset.
-- View a visual prioritization score.
-- Examine the indicators contributing to the score.
-- Understand why certain vulnerabilities deserve attention.
-
-**Important:** The prioritization score is an explainable triage indicator, not a statistical prediction of future exploitation.
-
-###  04 — AI Threat Investigation Lab
-
-Explore vulnerabilities through an interactive investigation environment.
-
-- Build relationship graphs around selected CVEs.
-- Connect vulnerabilities with vendors and affected products.
-- Explore defensive investigation actions.
-- Request Groq-powered explanations of selected findings.
-
-###  05 — Automated Security Report Generator
-
-Transform vulnerability datasets into structured PDF reports.
-
-Reports can include:
-
-- Executive overview
-- Vulnerability findings
-- Prioritization indicators
-- Remediation guidance
-- Data-source limitations
-
-Reports are generated on demand without persisting uploaded datasets on the server.
-
-###  06 — CVE Intelligence Explorer
-
-Search and examine known exploited vulnerabilities.
-
-- CVE identifier search
-- Vendor and product filtering
-- Keyword-based exploration
-- Vulnerability descriptions
-- Official CISA KEV intelligence
-
-###  07 — Read-Only MCP Server
-
-A standalone Python Model Context Protocol server that exposes threat intelligence through controlled, read-only tools.
-
-**Available MCP tools:**
-
-| Tool | Purpose |
-|---|---|
-| `get_latest_vulnerabilities` | Retrieve recently added vulnerability records |
-| `get_vulnerability` | Retrieve details for a specific CVE |
-| `search_vulnerabilities` | Search vulnerability intelligence |
-| `get_catalog_stats` | Retrieve catalog statistics |
-
-The MCP server uses stdio transport and is intended for integration with compatible MCP clients.
-
-###  08 — CSV and JSON Intelligence Upload
-
-Bring your own vulnerability data into the dashboard.
-
-- CSV and JSON support
-- Up to 25 MB per upload
-- Up to 20,000 records
-- CVE identifier validation
-- Temporary in-memory preview
-- No server-side persistence of uploaded datasets
-
-###  09 — Cybersecurity Intelligence Dashboard
-
-A futuristic dashboard featuring:
-
-- Animated dotted/starfield visuals
-- Responsive navigation
-- Vulnerability statistics
-- Security activity feed
-- Interactive data exploration
-- Dedicated AI investigation workspaces
-
----
-
-##  System Architecture
-
-```mermaid
-flowchart TD
-    A["ThreatGuard Web Dashboard"] --> B["Python Flask Backend"]
-
-    B --> C["Groq AI Integration"]
-    B --> D["Threat Intelligence Service"]
-    B --> E["Risk Prioritization"]
-    B --> F["Investigation Lab"]
-    B --> G["PDF Report Generator"]
-    B --> H["CSV / JSON Preview"]
-
-    C --> I["Groq LLM"]
-    C --> J["Whisper Speech-to-Text"]
-
-    D --> K["Official CISA KEV Feed"]
-    L["MCP-Compatible AI Client"] --> M["Read-Only MCP Server"]
-    M --> D
-```
-
-### Architectural Principles
-
-**Separation of concerns:** The Flask dashboard and standalone MCP server use a shared threat-intelligence service.
-
-**Read-only access:** The MCP interface provides vulnerability retrieval tools without catalog modification operations.
-
-**Server-side AI integration:** Groq credentials remain outside frontend JavaScript.
-
-**Explainable analysis:** Vulnerability prioritization exposes contributing factors rather than presenting unsupported predictions.
-
----
-
-##  Technology Stack
-
-| Layer | Technologies |
-|---|---|
-| Frontend | HTML5, CSS3, JavaScript |
-| Backend | Python, Flask |
-| AI Integration | Groq API |
-| Language Model | OpenAI GPT-OSS 20B via Groq |
-| Speech AI | Whisper Large V3 Turbo |
-| AI Tool Protocol | Model Context Protocol (MCP) |
-| Threat Intelligence | CISA KEV |
-| Reporting | ReportLab |
-| Deployment | Render, Gunicorn |
-| Version Control | Git, GitHub |
-| Security | Input validation, rate limiting, logging |
-
----
-
-##  Live Application
-
-**Experience ThreatGuard MCP AI:**
-
-### https://threatguard-mcp.onrender.com/
-
-Explore the application through its dedicated workspaces:
-
-1. Overview
-2. CVE Explorer
-3. Activity Feed
-4. MCP Architecture
-5. CSV / JSON Upload
-6. Groq AI Chat
-7. AI Threat Risk Predictor
-8. AI Investigation Lab
-9. Security Reports
-
-The dashboard offers three intelligence-source options: demo data, temporary user-uploaded data, and live CISA KEV.
-
----
-
-##  Installation and Setup
-
-### Prerequisites
-
-- Python 3.10+
-- Git
-- Internet connection for live threat intelligence and Groq API access
-- Groq API key for AI-powered features
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/rohanbhowm25308/ThreatGuard-MCP.git
-cd ThreatGuard-MCP
-```
-
-### 2. Create a virtual environment
-
-**Windows:**
-
+## Run in VS Code (Windows PowerShell)
 ```powershell
-python -m venv .venv
+cd ThreatGuard-MCP
+py -m venv .venv
 .\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python app.py
 ```
+Open **http://127.0.0.1:5000**. If PowerShell blocks activation, use `.venv\Scripts\python.exe app.py` and `.venv\Scripts\python.exe -m pip install -r requirements.txt` instead.
 
-**macOS / Linux:**
-
+macOS/Linux:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-```
-
-### 3. Install dependencies
-
-```bash
 pip install -r requirements.txt
-```
-
-### 4. Configure environment variables
-
-Copy `.env.example` to `.env`, then configure:
-
-```env
-GROQ_API_KEY=your_groq_api_key_here
-GROQ_MODEL=openai/gpt-oss-20b
-GROQ_WHISPER_MODEL=whisper-large-v3-turbo
-```
-
-Never commit `.env` or real API credentials to GitHub.
-
-### 5. Start the application
-
-```bash
 python app.py
 ```
 
-Open:
-
-```text
-http://127.0.0.1:5000
-```
-
----
-
-##  Running the MCP Server
-
-The standalone MCP server can be connected to an MCP-compatible client.
-
+## Run MCP server separately
 ```bash
 python mcp_server.py
 ```
-
-For an MCP client using stdio transport, configure the Python executable and absolute path to `mcp_server.py` according to that client's configuration format.
-
-The deployed Flask website is a separate HTTP application; the standalone MCP server is not automatically exposed as a public remote MCP endpoint.
-
----
-
-##  Deployment on Render
-
-ThreatGuard can be deployed as a Python Web Service on Render.
-
-**Build Command:**
-
-```bash
-pip install -r requirements.txt
+MCP stdio is a protocol, **not a website**: it must be started by an MCP-compatible client. Example client configuration (replace path with your absolute project path):
+```json
+{
+  "mcpServers": {
+    "threatguard": {
+      "command": "C:\\absolute\\path\\to\\ThreatGuard-MCP\\.venv\\Scripts\\python.exe",
+      "args": ["C:\\absolute\\path\\to\\ThreatGuard-MCP\\mcp_server.py"]
+    }
+  }
+}
 ```
+The MCP tools are `get_latest_vulnerabilities`, `get_vulnerability`, `search_vulnerabilities`, and `get_catalog_stats`.
 
-**Start Command:**
+## API endpoints
+- `GET /api/health`
+- `GET /api/stats`
+- `GET /api/latest?limit=25`
+- `GET /api/search?q=Microsoft&limit=25`
+- `GET /api/cve/CVE-2024-12345` (only returns a match if present in KEV)
 
-```bash
-gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120
-```
-
-Configure the Groq environment variables in the Render dashboard.
-
-For production use, review authentication, proxy configuration, rate limiting, resource usage, and the security review before allowing untrusted public traffic.
-
----
-
-##  Security Architecture
-
-ThreatGuard incorporates security-focused design choices:
-
-| Security Control | Purpose |
-|---|---|
-| Read-only MCP tools | Reduce the risk of unauthorized catalog modification |
-| Input validation | Reject malformed or unsupported inputs |
-| Rate limiting | Limit excessive API and tool requests |
-| Security logging | Support request monitoring and troubleshooting |
-| Server-side API credentials | Prevent direct exposure of Groq keys in frontend code |
-| Upload validation | Enforce file and record constraints |
-| Request timeouts | Reduce the impact of unresponsive upstream services |
-
-### Security Considerations
-
-This project is an educational AI integration and cybersecurity prototype.
-
-- In-memory rate limits are not equivalent to distributed production rate limiting.
-- Public deployments should use appropriate authentication and operational controls.
-- Uploaded records and AI responses must be treated as untrusted information.
-- AI-generated guidance should be verified against official security advisories.
-- CISA KEV covers known exploited vulnerabilities, not the entire CVE ecosystem.
-
-Read the project's [Security Review](https://github.com/rohanbhowm25308/ThreatGuard-MCP/blob/main/docs/SECURITY_REVIEW.md) for additional details.
-
----
-
-## 🧪 Testing
-
-Run the automated test suite:
-
+## Run tests
 ```bash
 python -m pytest -q
 ```
 
-Recommended validation areas include:
+## Important security and data limitations
+- This is a **local educational prototype**. Keep Flask bound to `127.0.0.1` by default. Do not expose it publicly without authentication, TLS, proxy configuration, and a production-grade distributed rate limiter.
+- Flask's local HTTP API has rate limiting; the **stdio MCP tool interface also enforces 30 tool calls per minute per process**. These are educational, in-memory controls, not production-grade distributed limits.
+- CISA KEV lists *known exploited* vulnerabilities, not every CVE. No CVSS scores are provided by this source. Do not label KEV entries as "critical" solely because they appear in the catalog.
+- No LLM API key is required; MCP makes the data accessible to AI clients. No AI-generated conclusions are invented.
+- See [`docs/SECURITY_REVIEW.md`](docs/SECURITY_REVIEW.md) for findings and mitigations.
 
-- CVE identifier handling
-- API input validation
-- Read-only MCP behavior
-- Rate-limit enforcement
-- Upload validation
-- Upstream feed failure handling
-- AI API error handling
-- Report generation
+## Source
+Official feed: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
 
----
+## Project layout
+```
+app.py               Flask UI + read-only HTTP API
+mcp_server.py        MCP stdio tools
+threat_service.py    Shared CISA KEV service
+static/              CSS and JavaScript
+templates/          Dashboard HTML
+tests/              Automated tests
+docs/               Self security review
+```
 
-##  Project Domain — Advanced AI Integration
 
-ThreatGuard MCP AI was developed as an **Advanced AI Integration Internship Project**.
+## Data source popup (new)
+On every fresh page open, a source-selection popup offers **Demo data**, **Upload your data**, or **Live CISA KEV**. The app never fetches live data until chosen. Demo records are illustrative. Upload accepts CSV or JSON with a `cveID` field (CVE-YYYY-NNNN), up to 20,000 records and 25 MB. Uploads are validated in memory and returned for browser preview; no uploaded dataset is stored on disk or added to CISA. Switching sources clears the displayed data. The server-side MCP tools still access the official CISA source, independent of browser demo/upload selections.
 
-The project demonstrates practical integration of:
+### CSV upload troubleshooting (updated)
 
-- Large Language Models with Python backend services
-- AI APIs with external cybersecurity intelligence
-- Model Context Protocol tools
-- Speech-to-text AI services
-- Explainable decision-support workflows
-- Automated document generation
-- Security controls for AI-enabled applications
+Choose **Upload your data** and select a `.csv` or `.json` file. CSV files must have a CVE ID column; accepted spellings include `cveID`, `CVE ID`, `cve_id`, and `CVE-ID`. Other recognized fields (for example `Vendor`, `Product`, `Description`, `Date Added`) are optional. UTF-8, UTF-8 BOM, and Windows CP1252 CSV files are supported, as are comma, semicolon, tab and pipe separators. Uploads are limited to 25 MB and 20,000 records. Errors identify missing columns and invalid CVE IDs by row. Uploaded content is only previewed in memory and is not persisted.
 
-The primary focus is not training an AI model from scratch, but **integrating AI capabilities into a functional, security-conscious software system**.
 
----
+Large CSV uploads: file cap 25 MB and 20,000 records. Requests have a 26 MiB multipart cap. The entire preview is returned to the browser; for much larger datasets, implement pagination and streaming rather than removing limits.
 
-##  Data Sources and References
+## Groq AI Chat
 
-- [CISA Known Exploited Vulnerabilities Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
-- [Model Context Protocol](https://modelcontextprotocol.io/)
-- [Groq Documentation](https://console.groq.com/docs)
-- [Flask Documentation](https://flask.palletsprojects.com/)
-- [Render Documentation](https://render.com/docs)
+1. Install dependencies: `pip install -r requirements.txt`
+2. Copy `.env.example` to `.env` and replace `your_groq_api_key_here` with your Groq key.
+3. Run `python app.py` and open `http://127.0.0.1:5000/#chat`.
+4. Use **Groq AI Chat** in the left sidebar. The key is never exposed to browser JavaScript.
 
----
-
-## 👨‍💻 Developer
-
-**Rohan Bhowmik**
-
-*AI/ML Developer | Data Science Enthusiast | Generative AI | AI Integration & Web Devloper*
-
-Passionate about building practical AI-powered applications that connect intelligent models with real-world problems.
-
-<p align="center">
-  <a href="https://github.com/rohanbhowm25308">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
-  </a>
-  <a href="https://www.linkedin.com/in/rohan-bhowmik-b014473a1">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
-  </a>
-  <a href="https://venerable-lamington-90daf4.netlify.app/">
-    <img src="https://img.shields.io/badge/Portfolio-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" />
-  </a>
-</p>
-
----
-
-## ⭐ Support the Project
-
-If you find ThreatGuard MCP useful, consider giving the repository a star.
-
-Your feedback and contributions are welcome.
-
-<p align="center">
-  <strong>🛡️ ThreatGuard MCP </strong>
-</p>
-
-<p align="center">
-  <em>From Vulnerability Data to Intelligent Defense.</em>
-</p>
-
-<p align="center">
-  Built with Python • Powered by AI • Engineered for Security
-</p>
-
-<p align="center">
-  © ThreatGuard MCP
-</p>
+The assistant sends your question and up to 12 selected demo/upload records to Groq; uploaded records are untrusted and may contain sensitive information. The AI chat is a POST endpoint and does not modify the CISA catalog. Do not expose this demo publicly without authentication and production controls. Model availability and Groq service access are required for responses.
